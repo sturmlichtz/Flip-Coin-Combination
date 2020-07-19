@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash 
 echo "Flip Coin Combination"
 declare -A ResultsDict
 singletResults=(H T)
@@ -30,4 +30,12 @@ do
 	percantage=$(( (${ResultsDict[$side]}*100)/$limit ))
 	echo "$side won for $percantage % in doublet combination"
 done
-
+winningCombination=${singletResults[1]}
+for side in ${!ResultsDict[@]}
+do
+   if [ ${ResultsDict[$side]} -gt ${ResultsDict[$winningCombination]} ]
+   then
+      winningCombination=$side
+   fi
+done
+echo "Winning Combination is "$winningCombination
