@@ -31,3 +31,16 @@ do
 	echo "$side won for $percantage % in doublet combination"
 done
 
+tripletResults=(HHH HHT HTH THH HTT THT TTH TTT)
+ResultsDict[${tripletResults[$coinSide]}]=0
+for((i=o;i<$limit;i++))
+do
+	coinSide=$((RANDOM%8))
+	ResultsDict[${tripletResults[$coinSide]}]=$((${ResultsDict[${tripletResults[$coinSide]}]}+1))
+done
+for side in ${tripletResults[@]}
+do
+	echo "$side won for :- " ${ResultsDict[$side]}
+	percantage=$(( (${ResultsDict[$side]}*100)/$limit ))
+	echo "$side won for $percantage % in triplet combination"
+done
